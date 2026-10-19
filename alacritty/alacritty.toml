@@ -56,3 +56,120 @@ blue    = "#83a598"
 magenta = "#d3869b"
 cyan    = "#8ec07c"
 white   = "#ebdbb2"
+
+# ── кириллическая раскладка ──────────────────────────────────────────────────
+# На macOS Ctrl + кириллическая буква отправляет саму букву, а не управляющий
+# код: не работают Ctrl-c в shell, Ctrl-b (prefix) в tmux, Ctrl-w в Neovim.
+# Отправляем те же коды, что и Ctrl + латинская буква на той же клавише.
+[[keyboard.bindings]]
+key = "ф"
+mods = "Control"
+chars = "\u0001"  # Ctrl-a
+[[keyboard.bindings]]
+key = "и"
+mods = "Control"
+chars = "\u0002"  # Ctrl-b
+[[keyboard.bindings]]
+key = "с"
+mods = "Control"
+chars = "\u0003"  # Ctrl-c
+[[keyboard.bindings]]
+key = "в"
+mods = "Control"
+chars = "\u0004"  # Ctrl-d
+[[keyboard.bindings]]
+key = "у"
+mods = "Control"
+chars = "\u0005"  # Ctrl-e
+[[keyboard.bindings]]
+key = "а"
+mods = "Control"
+chars = "\u0006"  # Ctrl-f
+[[keyboard.bindings]]
+key = "п"
+mods = "Control"
+chars = "\u0007"  # Ctrl-g
+[[keyboard.bindings]]
+key = "р"
+mods = "Control"
+chars = "\u0008"  # Ctrl-h
+[[keyboard.bindings]]
+key = "ш"
+mods = "Control"
+chars = "\u0009"  # Ctrl-i
+[[keyboard.bindings]]
+key = "о"
+mods = "Control"
+chars = "\u000a"  # Ctrl-j
+[[keyboard.bindings]]
+key = "л"
+mods = "Control"
+chars = "\u000b"  # Ctrl-k
+[[keyboard.bindings]]
+key = "д"
+mods = "Control"
+chars = "\u000c"  # Ctrl-l
+[[keyboard.bindings]]
+key = "ь"
+mods = "Control"
+chars = "\u000d"  # Ctrl-m
+[[keyboard.bindings]]
+key = "т"
+mods = "Control"
+chars = "\u000e"  # Ctrl-n
+[[keyboard.bindings]]
+key = "щ"
+mods = "Control"
+chars = "\u000f"  # Ctrl-o
+[[keyboard.bindings]]
+key = "з"
+mods = "Control"
+chars = "\u0010"  # Ctrl-p
+[[keyboard.bindings]]
+key = "й"
+mods = "Control"
+chars = "\u0011"  # Ctrl-q
+[[keyboard.bindings]]
+key = "к"
+mods = "Control"
+chars = "\u0012"  # Ctrl-r
+[[keyboard.bindings]]
+key = "ы"
+mods = "Control"
+chars = "\u0013"  # Ctrl-s
+[[keyboard.bindings]]
+key = "е"
+mods = "Control"
+chars = "\u0014"  # Ctrl-t
+[[keyboard.bindings]]
+key = "г"
+mods = "Control"
+chars = "\u0015"  # Ctrl-u
+[[keyboard.bindings]]
+key = "м"
+mods = "Control"
+chars = "\u0016"  # Ctrl-v
+[[keyboard.bindings]]
+key = "ц"
+mods = "Control"
+chars = "\u0017"  # Ctrl-w
+[[keyboard.bindings]]
+key = "ч"
+mods = "Control"
+chars = "\u0018"  # Ctrl-x
+[[keyboard.bindings]]
+key = "н"
+mods = "Control"
+chars = "\u0019"  # Ctrl-y
+[[keyboard.bindings]]
+key = "я"
+mods = "Control"
+chars = "\u001a"  # Ctrl-z
+[[keyboard.bindings]]
+key = "х"
+mods = "Control"
+chars = "\u001b"  # Ctrl-[
+[[keyboard.bindings]]
+key = "ъ"
+mods = "Control"
+chars = "\u001d"  # Ctrl-]
