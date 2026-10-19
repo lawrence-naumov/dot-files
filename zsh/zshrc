@@ -1,0 +1,35 @@
+# Общий zsh-конфиг. Подключается из ~/.zshrc строкой:
+#   source ~/Configs/dotfiles/zsh/zshrc
+# Машинно-зависимое (Docker Desktop и т.п.) остаётся в самом ~/.zshrc.
+
+export PATH="$HOME/.local/bin:$PATH"
+[[ -d /opt/homebrew/opt/curl/bin ]] && export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
+# uvim [path...]: nvim inside the project's uv environment, current dir by default
+uvim() {
+  if (( $# )); then
+    uv run nvim "$@"
+  else
+    uv run nvim .
+  fi
+}
+
+# ── цвета ───────────────────────────────────────────────────────────────────
+export CLICOLOR=1                          # цветной вывод BSD ls (ls -G)
+export LSCOLORS=ExGxFxdxCxDxDxhbadExEx     # каталоги, ссылки, исполняемые — как в GNU ls
+alias ls='ls -G'
+alias ll='ls -lhG'
+alias la='ls -lahG'
+alias grep='grep --color=auto'
+
+# ── prompt в стиле fish: user@host ~/path (branch)> ─────────────────────────
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true   # * — есть неподтверждённые изменения
+zstyle ':vcs_info:git:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' stagedstr '+'
+zstyle ':vcs_info:git:*' formats ' %F{yellow}(%b%u%c)%f'
+zstyle ':vcs_info:git:*' actionformats ' %F{yellow}(%b|%a%u%c)%f'
+precmd() { vcs_info }
+setopt prompt_subst
+PROMPT='%F{green}%n@%m%f %F{blue}%~%f${vcs_info_msg_0_}%(?.%f.%F{red})>%f '

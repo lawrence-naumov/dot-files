@@ -1,0 +1,4 @@
+[push]
+	autoSetupRemote = true
+[alias]
+	hist = log --graph --date=format:'%Y-%m-%d [90m%I:%M %p' --pretty=format:'%C(yellow)%h%Creset %C(green)%ad%Creset %s%C(auto)%d%Creset %C(blue)<%an>%Creset'
