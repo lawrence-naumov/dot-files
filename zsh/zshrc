@@ -31,16 +31,15 @@ zstyle ':vcs_info:git:*' stagedstr '+'
 zstyle ':vcs_info:git:*' formats ' %F{yellow}(%b%u%c)%f'
 zstyle ':vcs_info:git:*' actionformats ' %F{yellow}(%b|%a%u%c)%f'
 # Код выхода показываем только если команда реально запускалась: отмена ввода
-# по Ctrl+C (и пустой Enter) не должна выводить [1]/[130]. 141 (SIGPIPE)
-# выводим серым: его даёт выход из pager'а по q до конца вывода (git log и т.п.).
+# по Ctrl+C (и пустой Enter) не должна выводить [1]/[130]. Выводим
+# серым, чтобы не отвлекал (141/SIGPIPE при выходе из pager'а по q — норма).
 preexec() { _cmd_ran=1 }
 precmd() {
   local st=$?
   vcs_info
-  psvar[1]= psvar[2]=
-  if (( _cmd_ran && st == 141 )); then psvar[2]=$st
-  elif (( _cmd_ran && st )); then psvar[1]=$st; fi
+  psvar[1]=
+  (( _cmd_ran && st )) && psvar[1]=$st
   _cmd_ran=0
 }
 setopt prompt_subst
-PROMPT='%F{green}%n@%m%f %F{blue}%~%f${vcs_info_msg_0_}%(1V. %F{red}[%1v] .)%(2V. %F{8}[%2v] .)>%f '
+PROMPT='%F{green}%n@%m%f %F{blue}%~%f${vcs_info_msg_0_}%(1V. %F{8}[%1v]%f .)> '
